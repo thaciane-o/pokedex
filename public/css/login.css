@@ -1,0 +1,7 @@
+.login-card {
+    width: 500px;
+    height: 500px;
+    border-radius: 8px; /* Ou 0 se quiser totalmente reto */
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
