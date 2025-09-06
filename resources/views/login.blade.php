@@ -58,7 +58,6 @@
 
                     <a href="{{ route('register') }}" class="text-decoration-none small">Criar conta</a>
                 </div>
-                <x-tabler.dropzone name="fileInputteste" url="{{route('upload')}}"  removeUrl="{{route('upload.remove')}}" />
 
                 <div class="d-grid">
                     <button type="submit" class="btn btn-primary">Entrar</button>
