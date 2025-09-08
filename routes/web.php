@@ -24,8 +24,8 @@ Route::post('/upload/remove', [UploadController::class, 'remove'])->name('upload
 Route::middleware(['auth', 'verified'])->group(function () {
 
     //Dashboard
-    Route::redirect('/', 'dashboard/home');
-    Route::get('dashboard/home', [DashboardController::class, 'home'])->name('dashboard.home');
+    Route::redirect('/', 'pokemon');
+    Route::redirect('dashboard/home','pokemon')->name('dashboard.home');
     Route::get('log', [DashboardController::class, 'log'])->name('dashboard.log');
 
     // Funcionario

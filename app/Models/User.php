@@ -53,6 +53,10 @@ class User extends Authenticatable
     {
         return $this->hasOne(Funcionario::class, 'user_id');
     }
+    public function pokemons()
+    {
+        return $this->hasOne(Pokemon::class, 'user_id');
+    }
 
     public function image(){
         return $this->hasOne(Imagem::class, "user_id");

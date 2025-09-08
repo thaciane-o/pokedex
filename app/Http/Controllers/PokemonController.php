@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pokemon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PokemonController extends Controller
 {
     public function index()
     {
-        return view('pokemon.index');
+        $pokemons = Pokemon::where('user_id', Auth::id())->paginate(12);
+        return view('pokemon.index', compact('pokemons'));
     }
 
     public function create()
@@ -28,6 +31,6 @@ class PokemonController extends Controller
 
     }
     public function dados(){
-        
+
     }
 }

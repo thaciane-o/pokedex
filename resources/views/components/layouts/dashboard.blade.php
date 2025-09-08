@@ -3,7 +3,6 @@
     <link rel="stylesheet" href="{{asset('css/dashboard.css')}}">
 @endpush
 
-<x-layouts.base>
     <!-- Conteúdo principal -->
     <div class="page-wrapper">
 
@@ -28,4 +27,3 @@
             </div>
         </div>
     </div>
-</x-layouts.base>

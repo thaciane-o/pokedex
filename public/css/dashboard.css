@@ -35,3 +35,31 @@
 body {
   overflow-x: hidden;
 }
+.badge-outline {
+    background-color: transparent !important;
+    border: 1px solid;
+}
+.badge-outline-danger { border-color: #dc3545; color: #dc3545; }
+.badge-outline-primary { border-color: #0d6efd; color: #0d6efd; }
+.badge-outline-success { border-color: #198754; color: #198754; }
+.badge-outline-warning { border-color: #ffc107; color: #664d03; }
+.badge-outline-secondary { border-color: #6c757d; color: #6c757d; }
+.badge-outline-info { border-color: #0dcaf0; color: #0dcaf0; }
+.badge-outline-dark { border-color: #212529; color: #212529; }
+/* Extras personalizados */
+.badge-outline-pink { border-color: #d63384; color: #d63384; }
+.badge-outline-purple { border-color: #6f42c1; color: #6f42c1; }
+.badge-outline-brown { border-color: #7b3f00; color: #7b3f00; }
+.badge{
+    border-radius: 20px;
+}
+.form-control{
+    border-radius: 6px !important;
+}
+.background-body{
+    background-color: #cc0000 !important;
+}
+
+.card{
+    box-shadow: 0px 0px 20px 0px ;
+}
