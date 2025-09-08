@@ -4,6 +4,7 @@ use App\Http\Controllers\auth\UserAuth;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FuncionarioController;
+use App\Http\Controllers\PokemonController;
 use App\Http\Controllers\UploadController;
 use Illuminate\Support\Facades\Route;
 
@@ -36,6 +37,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     //Chat
     Route::resource('chat', ChatController::class);
 
+    // Pokemon
+    Route::resource('pokemon', PokemonController::class);
 
     Route::get('/logout', [UserAuth::class, 'logout'])->name('logout');
 
