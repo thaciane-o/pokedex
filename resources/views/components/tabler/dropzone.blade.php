@@ -1,10 +1,15 @@
 @props([
-    'name' => 'file',
+    'id' => '',
+    'name' => '',
     'url' => '',
     'shape' => 'rect',
     'removeUrl' => '',
     'multiple' => false
 ])
+
+@php
+    $multiple = filter_var($multiple, FILTER_VALIDATE_BOOLEAN);
+@endphp
 
 @push('styles')
 <style>
@@ -53,10 +58,10 @@
         <div id="fileList" class="w-100 mt-2"></div>
     </div>
     @if ($multiple)
-        <input type="file" id="fileInput" multiple hidden>
+        <input type="file" id={{$id}} name={{$name}} multiple hidden>
 
     @else
-        <input type="file" id="fileInput"  hidden>
+        <input type="file" id={{$id}} name={{$name}} hidden>
 
     @endif
 </div>
@@ -65,7 +70,7 @@
 <script>
 $(document).ready(function(){
     let dropzone = $("#dropzone");
-    let fileInput = $("#fileInput");
+    let fileInput = $("#{{$id}}");
     let fileList = $("#fileList");
     let mensagem = $("#mensagem");
     let multiple = "{{$multiple}}"
@@ -133,7 +138,7 @@ $(document).ready(function(){
                                 <strong>${file.name}</strong><br>
                                 <small class="text-muted">${(file.size/1024).toFixed(1)} KB</small>
                             </div>
-                            <input type="hidden" id="fileInput" name="fileInput[]" value="${path}">
+                            <input type="hidden" id="{{ $id }}" name="{{ $multiple ? $name.'[]' : $name }}" value="${path}">
 
                             <div>
                                 <button class="btn btn-sm btn-outline-danger btn-remove me-1">
