@@ -25,7 +25,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     //Dashboard
     Route::redirect('/', 'pokemon');
-    Route::get('dashboard/home', [DashboardController::class, 'home'])->name('dashboard.home');
+    Route::redirect('dashboard/home','pokemon')->name('dashboard.home');
     Route::get('log', [DashboardController::class, 'log'])->name('dashboard.log');
 
     // Funcionario

@@ -4,18 +4,27 @@ namespace App\Http\Controllers;
 
 use App\Models\Pokemon;
 use Illuminate\Http\Request;
+<<<<<<< HEAD
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 
 use function Laravel\Prompts\error;
+=======
+use Illuminate\Support\Facades\Auth;
+>>>>>>> listar-pokemon
 
 class PokemonController extends Controller
 {
     public function index()
     {
+<<<<<<< HEAD
         $dados = $this->dados();
         return view('pokemon.index', $dados);
+=======
+        $pokemons = Pokemon::where('user_id', Auth::id())->paginate(12);
+        return view('pokemon.index', compact('pokemons'));
+>>>>>>> listar-pokemon
     }
 
     public function create()
@@ -65,9 +74,17 @@ class PokemonController extends Controller
         };
     }
 
+<<<<<<< HEAD
     public function update(Request $request, $id)
     {
         
+=======
+    public function update(){
+
+    }
+    public function dados(){
+
+>>>>>>> listar-pokemon
     }
 
     public function destroy($id)

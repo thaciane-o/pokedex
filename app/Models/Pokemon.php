@@ -16,8 +16,15 @@ class Pokemon extends Model
         'tipo',
         'foto',
     ];
+<<<<<<< HEAD
 
     protected $casts = [
         'tipo' => 'array',
     ];
+=======
+    public function user(){
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+>>>>>>> listar-pokemon
 }
