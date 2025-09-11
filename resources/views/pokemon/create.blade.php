@@ -11,16 +11,6 @@
     <x-tabler.btn-submit form="formulario" icon="ti ti-check" hint="Salvar Pokémon" />
 @endsection
 
-@if ($errors->any())
-    @push('scripts')
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                Notiflix.Notify.failure('Por favor, corrija os erros no formulário: ' + '{{ implode(' ', $errors->all()) }}');
-            });
-        </script>
-    @endpush
-@endif
-
 @section('main')
     <form id="formulario" method="POST" action="{{ route('pokemon.store') }}" enctype="multipart/form-data" novalidate
         autocomplete="off">

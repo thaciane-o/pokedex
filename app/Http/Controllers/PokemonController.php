@@ -12,13 +12,6 @@ use function Laravel\Prompts\error;
 
 class PokemonController extends Controller
 {
-    public $removeUpload;
-
-    public function __construct()
-    {
-        $this->removeUpload = app(UploadController::class);
-    }
-
     public function index()
     {
         $dados = $this->dados();
