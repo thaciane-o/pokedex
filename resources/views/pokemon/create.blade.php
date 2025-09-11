@@ -11,6 +11,16 @@
     <x-tabler.btn-submit form="formulario" icon="ti ti-check" hint="Salvar Pokémon" />
 @endsection
 
+@if ($errors->any())
+    @push('scripts')
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                Notiflix.Notify.failure('Por favor, corrija os erros no formulário: ' + '{{ implode(' ', $errors->all()) }}');
+            });
+        </script>
+    @endpush
+@endif
+
 @section('main')
     <form id="formulario" method="POST" action="{{ route('pokemon.store') }}" enctype="multipart/form-data" novalidate
         autocomplete="off">
@@ -38,7 +48,7 @@
                             <div class="row row-cols-4 row-cols-sm-5 row-cols-md-6 row-cols-lg-7 g-2">
                                 <div class="col">
                                     <label class="form-imagecheck">
-                                        <input name="tipo[]" id="tipo" type="checkbox" value="normal"
+                                        <input name="tipo[]" id="tipo" type="checkbox" value="Normal"
                                             class="form-imagecheck-input" />
                                         <span class="form-imagecheck-figure">
                                             <img src="{{ asset('img/tipo_pokemon/normal.png') }}" alt="Normal"
@@ -48,7 +58,7 @@
                                 </div>
                                 <div class="col">
                                     <label class="form-imagecheck">
-                                        <input name="tipo[]" id="tipo" type="checkbox" value="fogo"
+                                        <input name="tipo[]" id="tipo" type="checkbox" value="Fogo"
                                             class="form-imagecheck-input" />
                                         <span class="form-imagecheck-figure">
                                             <img src="{{ asset('img/tipo_pokemon/fogo.png') }}" alt="Fogo"
@@ -58,7 +68,7 @@
                                 </div>
                                 <div class="col">
                                     <label class="form-imagecheck">
-                                        <input name="tipo[]" id="tipo" type="checkbox" value="agua"
+                                        <input name="tipo[]" id="tipo" type="checkbox" value="Água"
                                             class="form-imagecheck-input" />
                                         <span class="form-imagecheck-figure">
                                             <img src="{{ asset('img/tipo_pokemon/agua.png') }}" alt="Água"
@@ -68,7 +78,7 @@
                                 </div>
                                 <div class="col">
                                     <label class="form-imagecheck">
-                                        <input name="tipo[]" id="tipo" type="checkbox" value="grama"
+                                        <input name="tipo[]" id="tipo" type="checkbox" value="Grama"
                                             class="form-imagecheck-input" />
                                         <span class="form-imagecheck-figure">
                                             <img src="{{ asset('img/tipo_pokemon/grama.png') }}" alt="Grama"
@@ -78,7 +88,7 @@
                                 </div>
                                 <div class="col">
                                     <label class="form-imagecheck">
-                                        <input name="tipo[]" id="tipo" type="checkbox" value="eletrico"
+                                        <input name="tipo[]" id="tipo" type="checkbox" value="Elétrico"
                                             class="form-imagecheck-input" />
                                         <span class="form-imagecheck-figure">
                                             <img src="{{ asset('img/tipo_pokemon/eletrico.png') }}" alt="Elétrico"
@@ -88,7 +98,7 @@
                                 </div>
                                 <div class="col">
                                     <label class="form-imagecheck">
-                                        <input name="tipo[]" id="tipo" type="checkbox" value="gelo"
+                                        <input name="tipo[]" id="tipo" type="checkbox" value="Gelo"
                                             class="form-imagecheck-input" />
                                         <span class="form-imagecheck-figure">
                                             <img src="{{ asset('img/tipo_pokemon/gelo.png') }}" alt="Gelo"
@@ -98,7 +108,7 @@
                                 </div>
                                 <div class="col">
                                     <label class="form-imagecheck">
-                                        <input name="tipo[]" id="tipo" type="checkbox" value="lutador"
+                                        <input name="tipo[]" id="tipo" type="checkbox" value="Lutador"
                                             class="form-imagecheck-input" />
                                         <span class="form-imagecheck-figure">
                                             <img src="{{ asset('img/tipo_pokemon/lutador.png') }}" alt="Lutador"
@@ -108,7 +118,7 @@
                                 </div>
                                 <div class="col">
                                     <label class="form-imagecheck">
-                                        <input name="tipo[]" id="tipo" type="checkbox" value="venenoso"
+                                        <input name="tipo[]" id="tipo" type="checkbox" value="Venenoso"
                                             class="form-imagecheck-input" />
                                         <span class="form-imagecheck-figure">
                                             <img src="{{ asset('img/tipo_pokemon/venenoso.png') }}" alt="Veneno"
@@ -118,7 +128,7 @@
                                 </div>
                                 <div class="col">
                                     <label class="form-imagecheck">
-                                        <input name="tipo[]" id="tipo" type="checkbox" value="terrestre"
+                                        <input name="tipo[]" id="tipo" type="checkbox" value="Terrestre"
                                             class="form-imagecheck-input" />
                                         <span class="form-imagecheck-figure">
                                             <img src="{{ asset('img/tipo_pokemon/terrestre.png') }}" alt="Terra"
@@ -128,7 +138,7 @@
                                 </div>
                                 <div class="col">
                                     <label class="form-imagecheck">
-                                        <input name="tipo[]" id="tipo" type="checkbox" value="voador"
+                                        <input name="tipo[]" id="tipo" type="checkbox" value="Voador"
                                             class="form-imagecheck-input" />
                                         <span class="form-imagecheck-figure">
                                             <img src="{{ asset('img/tipo_pokemon/voador.png') }}" alt="Voador"
@@ -138,7 +148,7 @@
                                 </div>
                                 <div class="col">
                                     <label class="form-imagecheck">
-                                        <input name="tipo[]" id="tipo" type="checkbox" value="psiquico"
+                                        <input name="tipo[]" id="tipo" type="checkbox" value="Psíquico"
                                             class="form-imagecheck-input" />
                                         <span class="form-imagecheck-figure">
                                             <img src="{{ asset('img/tipo_pokemon/psiquico.png') }}" alt="Psíquico"
@@ -148,7 +158,7 @@
                                 </div>
                                 <div class="col">
                                     <label class="form-imagecheck">
-                                        <input name="tipo[]" id="tipo" type="checkbox" value="inseto"
+                                        <input name="tipo[]" id="tipo" type="checkbox" value="Inseto"
                                             class="form-imagecheck-input" />
                                         <span class="form-imagecheck-figure">
                                             <img src="{{ asset('img/tipo_pokemon/inseto.png') }}" alt="Inseto"
@@ -158,7 +168,7 @@
                                 </div>
                                 <div class="col">
                                     <label class="form-imagecheck">
-                                        <input name="tipo[]" id="tipo" type="checkbox" value="pedra"
+                                        <input name="tipo[]" id="tipo" type="checkbox" value="Pedra"
                                             class="form-imagecheck-input" />
                                         <span class="form-imagecheck-figure">
                                             <img src="{{ asset('img/tipo_pokemon/pedra.png') }}" alt="Pedra"
@@ -168,7 +178,7 @@
                                 </div>
                                 <div class="col">
                                     <label class="form-imagecheck">
-                                        <input name="tipo[]" id="tipo" type="checkbox" value="fantasma"
+                                        <input name="tipo[]" id="tipo" type="checkbox" value="Fantasma"
                                             class="form-imagecheck-input" />
                                         <span class="form-imagecheck-figure">
                                             <img src="{{ asset('img/tipo_pokemon/fantasma.png') }}" alt="Fantasma"
@@ -178,7 +188,7 @@
                                 </div>
                                 <div class="col">
                                     <label class="form-imagecheck">
-                                        <input name="tipo[]" id="tipo" type="checkbox" value="dragao"
+                                        <input name="tipo[]" id="tipo" type="checkbox" value="Dragrão"
                                             class="form-imagecheck-input" />
                                         <span class="form-imagecheck-figure">
                                             <img src="{{ asset('img/tipo_pokemon/dragao.png') }}" alt="Dragão"
@@ -188,7 +198,7 @@
                                 </div>
                                 <div class="col">
                                     <label class="form-imagecheck">
-                                        <input name="tipo[]" id="tipo" type="checkbox" value="noturno"
+                                        <input name="tipo[]" id="tipo" type="checkbox" value="Noturno"
                                             class="form-imagecheck-input" />
                                         <span class="form-imagecheck-figure">
                                             <img src="{{ asset('img/tipo_pokemon/noturno.png') }}" alt="Sombrio"
@@ -198,7 +208,7 @@
                                 </div>
                                 <div class="col">
                                     <label class="form-imagecheck">
-                                        <input name="tipo[]" id="tipo" type="checkbox" value="metal"
+                                        <input name="tipo[]" id="tipo" type="checkbox" value="Metal"
                                             class="form-imagecheck-input" />
                                         <span class="form-imagecheck-figure">
                                             <img src="{{ asset('img/tipo_pokemon/metal.png') }}" alt="Aço"
@@ -208,7 +218,7 @@
                                 </div>
                                 <div class="col">
                                     <label class="form-imagecheck">
-                                        <input name="tipo[]" id="tipo" type="checkbox" value="fada"
+                                        <input name="tipo[]" id="tipo" type="checkbox" value="Fada"
                                             class="form-imagecheck-input" />
                                         <span class="form-imagecheck-figure">
                                             <img src="{{ asset('img/tipo_pokemon/fada.png') }}" alt="Fada"
@@ -223,7 +233,7 @@
                     <div class="col-lg-4">
                         <div class="mb-3">
                             <label class="form-label form-label-required" for="foto">Imagem do Pokémon:</label>
-                            <x-tabler.dropzone id="foto" name="foto" url="{{ route('upload') }}"
+                            <x-tabler.dropzone id="foto" name="foto" url="{{ route('upload') }}" 
                                 :multiple="false" removeUrl="{{ route('upload.remove') }}" />
                         </div>
                     </div>

@@ -7,4 +7,16 @@
 
 @section('main')
 
+@foreach ($pokemons as $pokemon)
+    <p>{{ $pokemon->nome }}</p>
+    <p>{{ $pokemon->tipo }}</p>
+    <img class="img-fluid" src="{{ $pokemon->foto }}" alt="{{ $pokemon->nome }}">
+    <a class="btn btn-primary" href="{{ route('pokemon.edit', encrypt($pokemon->id)) }}">Editar</a>
+    <form method="POST" action="{{route('pokemon.destroy', encrypt($pokemon->id))}}">
+        @csrf
+        @method('DELETE')
+        <button class="btn btn-danger">Excluir</button>
+    </form>
+@endforeach
+
 @endsection
