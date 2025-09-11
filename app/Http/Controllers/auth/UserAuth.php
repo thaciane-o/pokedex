@@ -38,7 +38,7 @@ class UserAuth extends Controller
         Session::regenerate();
 
         // Redireciona para o destino pretendido ou dashboard
-        return  redirect()->route('dashboard.home');
+        return  redirect()->route('pokemon.index');
     }
 
     public function register(Request $request)
@@ -60,7 +60,7 @@ class UserAuth extends Controller
         $image->user_id = $user->id;
         $image->save();
 
-        return redirect()->route('dashboard.home');
+        return redirect()->route('pokemon.index');
     }
     public function logout()
     {

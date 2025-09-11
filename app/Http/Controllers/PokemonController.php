@@ -12,9 +12,17 @@ use function Laravel\Prompts\error;
 
 class PokemonController extends Controller
 {
+    public $removeUpload;
+
+    public function __construct()
+    {
+        $this->removeUpload = app(UploadController::class);
+    }
+
     public function index()
     {
-        return view('pokemon.index');
+        $dados = $this->dados();
+        return view('pokemon.index', $dados);
     }
 
     public function create()
@@ -24,7 +32,15 @@ class PokemonController extends Controller
 
     public function edit($id)
     {
-        return view('pokemon.edit');
+        $pokemon = Pokemon::findOrFail(decrypt($id));
+        $tiposSelecionados = [];
+        if(is_array($pokemon->tipo)) {
+            $tiposSelecionados = $pokemon->tipo;
+        } else {
+            $tiposSelecionados = explode(',', $pokemon->tipo);
+        }
+
+        return view('pokemon.edit', compact('pokemon', 'tiposSelecionados'));
     }
 
     public function store(Request $request)
@@ -41,13 +57,13 @@ class PokemonController extends Controller
 
             $pokemon = new Pokemon;
             $pokemon->nome = $request->input('nome');
-            $pokemon->tipo = json_encode($request->input('tipo'));
+            $pokemon->tipo = $request->input('tipo');
             $pokemon->foto = $request->input('foto');
             $pokemon->save();
             DB::commit();
 
             flash()->success('Pokémon criado com sucesso!');
-            return view('pokemon.index');
+            return redirect()->route('pokemon.index');
         } catch (\Exception $e) {
             DB::rollBack();
             Log::error("Erro ao cadastrar Pokémon: " . $e->getMessage());
@@ -56,6 +72,24 @@ class PokemonController extends Controller
         };
     }
 
-    public function update() {}
-    public function dados() {}
+    public function update(Request $request, $id)
+    {
+        
+    }
+
+    public function destroy($id)
+    {
+       
+    }
+
+    public function dados()
+    {
+        $pokemons = Pokemon::all();
+
+        foreach ($pokemons as $pokemon) {
+            $pokemon->tipo = implode(', ', $pokemon->tipo);
+        }
+
+        return ['pokemons' => $pokemons];
+    }
 }

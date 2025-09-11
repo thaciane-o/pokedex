@@ -7,7 +7,7 @@
 @section('title', 'Pokémon')
 
 @section('title-actions')
-    <x-tabler.btn href="{{ route('pokemon.index') }}" class="btn btn-secondary" icon="ti ti-arrow-narrow-left" hint="Voltar" />
+    <x-tabler.btn href="{{ route('pokemon.index') }}" class="btn btn-secondary" text="Voltar" icon="ti ti-arrow-narrow-left" hint="Voltar" />
     <x-tabler.btn-submit form="formulario" icon="ti ti-check" hint="Salvar Pokémon" />
 @endsection
 
@@ -28,7 +28,9 @@
 
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Informações do Pokémon</h3>
+                <h3 class="card-title">
+                    Informações do Pokémon
+                </h3>
             </div>
             <div class="card-body">
                 <div class="row">

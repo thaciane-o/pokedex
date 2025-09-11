@@ -16,4 +16,8 @@ class Pokemon extends Model
         'tipo',
         'foto',
     ];
+
+    protected $casts = [
+        'tipo' => 'array',
+    ];
 }

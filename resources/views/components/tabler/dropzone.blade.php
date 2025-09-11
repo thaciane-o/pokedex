@@ -4,7 +4,8 @@
     'url' => '',
     'shape' => 'rect',
     'removeUrl' => '',
-    'multiple' => false
+    'multiple' => false,
+    'value' => ''
 ])
 
 @php
@@ -61,7 +62,7 @@
         <input type="file" id={{$id}} name={{$name}} multiple hidden>
 
     @else
-        <input type="file" id={{$id}} name={{$name}} hidden>
+        <input type="file" value="{{$value}}" id={{$id}} name={{$name}} hidden>
 
     @endif
 </div>
