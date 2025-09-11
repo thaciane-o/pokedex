@@ -1,15 +1,3 @@
-<<<<<<< HEAD
-@extends('layouts.dashboard')
-@section('title', 'Pokémon')
-@section('title-actions')
-    <x-tabler.btn href="{{ route('pokemon.create') }}" icon="ti ti-plus" class="btn btn-primary" text="Novo" hint="Cadastrar novo Pokémon" />
-@endsection
-
-
-@section('main')
-
-@endsection
-=======
 @extends('layouts.app')
 
 @section('content')
@@ -25,38 +13,5 @@
 @endsection
 
 @push('scripts')
-<script>
-    function confirmDelete(url) {
-        Notiflix.Confirm.show(
-            'Confirmação',
-            'Tem certeza que deseja excluir este registro?',
-            'Sim',
-            'Cancelar',
-            function okCb() {
-                const form = document.createElement('form');
-                form.action = url;
-                form.method = 'POST';
 
-                const method = document.createElement('input');
-                method.type = 'hidden';
-                method.name = '_method';
-                method.value = 'DELETE';
-
-                const token = document.createElement('input');
-                token.type = 'hidden';
-                token.name = '_token';
-                token.value = '{{ csrf_token() }}';
-
-                form.appendChild(method);
-                form.appendChild(token);
-                document.body.appendChild(form);
-                form.submit();
-            },
-            function cancelCb() {
-                Notiflix.Notify.info('Operação cancelada');
-            }
-        );
-    }
-</script>
 @endpush
->>>>>>> listar-pokemon

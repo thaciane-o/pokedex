@@ -50,6 +50,7 @@ class PokemonController extends Controller
             $pokemon->nome = $request->input('nome');
             $pokemon->tipo = $request->input('tipo');
             $pokemon->foto = $request->input('foto');
+            $pokemon->user_id = Auth::id();
             $pokemon->save();
             DB::commit();
 
@@ -58,7 +59,6 @@ class PokemonController extends Controller
         } catch (\Exception $e) {
             DB::rollBack();
             Log::error("Erro ao cadastrar Pokémon: " . $e->getMessage());
-            flash()->error('Não foi possível cadastrar:', $e->getMessage());
             return redirect()->back()->withInput();
         };
     }

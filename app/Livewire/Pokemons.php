@@ -9,22 +9,24 @@ use Livewire\WithPagination;
 
 class Pokemons extends Component
 {
-    use WithPagination;
+      use WithPagination;
+
     public $textSearch = '';
-    public $pokemons = [];
 
-
+    // Reseta para a primeira página ao mudar a busca
+    public function loadPokemon()
+    {
+        $this->resetPage();
+    }
 
     public function render()
     {
         $pokemons = Pokemon::where('user_id', Auth::id())
             ->when($this->textSearch, function ($query) {
-                $query->where('name', 'like', '%' . $this->textSearch . '%');
+                $query->where('nome', 'like', '%' . $this->textSearch . '%');
             })
             ->paginate(10);
 
-        return view('livewire.pokemons', [
-            'pokemons' => $pokemons,
-        ]);
+        return view('livewire.pokemons', compact('pokemons'));
     }
 }

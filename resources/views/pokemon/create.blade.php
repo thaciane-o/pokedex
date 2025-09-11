@@ -1,26 +1,29 @@
 @extends('layouts.dashboard')
 
-@section('pre-title')
-    Cadastrando Novo Pokémon
-@endsection
-
-@section('title', 'Pokémon')
+@section('title', '')
 
 @section('title-actions')
-    <x-tabler.btn href="{{ route('pokemon.index') }}" class="btn btn-secondary" text="Voltar" icon="ti ti-arrow-narrow-left" hint="Voltar" />
-    <x-tabler.btn-submit form="formulario" icon="ti ti-check" hint="Salvar Pokémon" />
 @endsection
 
 @section('main')
     <form id="formulario" method="POST" action="{{ route('pokemon.store') }}" enctype="multipart/form-data" novalidate
         autocomplete="off">
         @csrf
+        <div class="d-flex justify-content-center aling-items-center">
 
-        <div class="card">
+        <div class="p-3 card w-75">
             <div class="card-header">
-                <h3 class="card-title">
-                    Informações do Pokémon
-                </h3>
+                <div class="d-flex justify-content-between align-items-center w-100">
+                    <h3 class="card-title">
+                            Informações do Pokémon
+                    </h3>
+                    <div>
+                        <x-tabler.btn href="{{ route('pokemon.index') }}" class="btn btn-outline-secondary" text="Voltar" icon="ti ti-arrow-narrow-left" hint="Voltar" />
+                        <x-tabler.btn-submit form="formulario" icon="ti ti-check" hint="Salvar Pokémon" />
+                    </div>
+
+                </div>
+
             </div>
             <div class="card-body">
                 <div class="row">
@@ -229,6 +232,7 @@
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     </form>
 @endsection
