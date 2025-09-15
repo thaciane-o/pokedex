@@ -20,6 +20,7 @@ class Pokemon extends Model
     protected $casts = [
         'tipo' => 'array',
     ];
+    
     public function user(){
         return $this->belongsTo(User::class, 'user_id');
     }

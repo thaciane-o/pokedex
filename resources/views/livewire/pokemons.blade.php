@@ -30,20 +30,21 @@
                             @foreach($pokemon->tipo as $tipo)
                                 @php
                                     $cores = [
-                                        'fogo' => 'danger',
-                                        'agua' => 'primary',
-                                        'grama' => 'success',
-                                        'eletrico' => 'warning',
-                                        'normal' => 'secondary',
-                                        'voador' => 'info',
-                                        'fantasma' => 'dark',
-                                        'lutador' => 'danger',
-                                        'psiquico' => 'pink',
-                                        'gelo' => 'info',
-                                        'dragão' => 'purple',
-                                        'metal' => 'secondary',
-                                        'pedra' => 'dark',
-                                        'terra' => 'brown'
+                                        'Fogo' => 'danger',
+                                        'Água' => 'primary',
+                                        'Grama' => 'success',
+                                        'Elétrico' => 'warning',
+                                        'Normal' => 'secondary',
+                                        'Voador' => 'info',
+                                        'Fantasma' => 'dark',
+                                        'Lutador' => 'danger',
+                                        'Psíquico' => 'pink',
+                                        'Gelo' => 'info',
+                                        'Dragão' => 'blue',
+                                        'Venenoso' => 'purple',
+                                        'Metal' => 'secondary',
+                                        'Pedra' => 'dark',
+                                        'Terrestre' => 'brown'
                                     ];
                                     $tipo = trim($tipo);
                                     $badgeClass = $cores[$tipo] ?? 'secondary';

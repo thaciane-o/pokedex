@@ -20,12 +20,16 @@
         autocomplete="off">
         @csrf
         <div class="d-flex justify-content-center aling-items-center">
-
         <div class="p-3 card w-75">
             <div class="card-header">
                 <div class="d-flex justify-content-between align-items-center w-100">
                     <h3 class="card-title">
+                        <div class="page-pretitle">
+                            Registrando novo pokemon
+                        </div>
+                        <div class="page-title">
                             Informações do Pokémon
+                        </div>
                     </h3>
                     <div>
                         <x-tabler.btn href="{{ route('pokemon.index') }}" class="btn btn-outline-secondary" text="Voltar" icon="ti ti-arrow-narrow-left" hint="Voltar" />
