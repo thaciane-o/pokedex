@@ -27,7 +27,14 @@
 
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Informações do Pokémon</h3>
+                <h3 class="card-title">
+                        <div class="page-pretitle">
+                            Editando pokemon
+                        </div>
+                        <div class="page-title">
+                            Informações do Pokémon
+                        </div>
+                    </h3>
             </div>
             <div class="card-body">
                 <div class="row">

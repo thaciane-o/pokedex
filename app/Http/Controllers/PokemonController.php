@@ -22,7 +22,8 @@ class PokemonController extends Controller
     public function index()
     {
         $pokemons = Pokemon::where('user_id', Auth::id())->paginate(12);
-        return view('pokemon.index', compact('pokemons'));
+        $dados = $this->dados();
+        return view('pokemon.index', $dados, compact('pokemons'));
     }
 
     public function create()
