@@ -41,6 +41,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('pokemon', PokemonController::class);
 
     Route::get('/logout', [UserAuth::class, 'logout'])->name('logout');
+    Route::get('/perfil', [UserAuth::class, 'perfil'])->name('perfil');
+    Route::post('/update', [UserAuth::class, 'update'])->name('perfil.update');
+
 
 });
 

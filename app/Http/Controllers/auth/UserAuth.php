@@ -41,6 +41,21 @@ class UserAuth extends Controller
         return  redirect()->route('pokemon.index');
     }
 
+    public function update(Request $request){
+        $validated = $request->validate([
+            'nome' => ['required', 'string', 'max:255'],
+        ]);
+        $user = User::find(Auth::id());
+        $user->name = $validated['nome'];
+        $user->foto = $request->foto;
+
+        $user->save();
+
+        Auth::login($user);
+        return redirect()->route('pokemon.index');
+
+
+    }
     public function register(Request $request)
     {
         $validated = $request->validate([
@@ -61,6 +76,9 @@ class UserAuth extends Controller
         $image->save();
 
         return redirect()->route('pokemon.index');
+    }
+    public function perfil(){
+        return view('profile');
     }
     public function logout()
     {
