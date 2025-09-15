@@ -1,13 +1,4 @@
 @extends('layouts.dashboard')
-@section('pre-title')
-    Editando Pokémon 
-@endsection
-@section('title', 'Pokémon')
-
-@section('title-actions')
-    <x-tabler.btn href="{{ route('pokemon.index') }}" class="btn btn-secondary" icon="ti ti-arrow-narrow-left" hint="Voltar" text="Voltar" />
-    <x-tabler.btn-submit form="formulario" icon="ti ti-check" hint="Atualizar Pokémon" text="Salvar" />
-@endsection
 
 @if ($errors->any())
     @push('scripts')
@@ -27,14 +18,20 @@
 
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">
+                <div class="d-flex justify-content-between align-items-center w-100">
+                    <h3 class="card-title">
                         <div class="page-pretitle">
-                            Editando pokemon
+                            Editando Pokémon
                         </div>
                         <div class="page-title">
                             Informações do Pokémon
                         </div>
                     </h3>
+                    <div>
+                        <x-tabler.btn href="{{ route('pokemon.index') }}" class="btn btn-outline-secondary" text="Voltar" icon="ti ti-arrow-narrow-left" hint="Voltar" />
+                        <x-tabler.btn-submit form="formulario" icon="ti ti-check" hint="Salvar Pokémon" />
+                    </div>
+                </div>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -292,15 +289,34 @@
                     <div class="col-lg-4">
                         <div class="mb-3">
                             <label class="form-label form-label-required" for="foto">Imagem do Pokémon:</label>
-                            <x-tabler.dropzone id="foto" name="foto" url="{{ route('upload') }}" 
-                              :multiple="false" removeUrl="{{ route('upload.remove') }}" />
 
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Arquivo Antigo</h5>
-                                    <p class="card-text"></p>
+                            <x-tabler.dropzone id="foto" name="foto" 
+                                url="{{ route('upload') }}" 
+                                :multiple="false" 
+                                removeUrl="{{ route('upload.remove') }}" />
+
+                            @if(!empty($pokemon->foto))
+                                <div class="card mt-3 col-12 col-md-9 col-sm-4">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Arquivo Antigo</h5>
+                                        @php
+                                            $fileUrl = Storage::url($pokemon->foto);
+                                        @endphp
+                                        
+                                        @if(Str::endsWith($pokemon->foto, ['.jpg', '.jpeg', '.png', '.gif', '.webp']))
+                                            <img src="{{ $fileUrl }}" 
+                                                alt="Imagem atual do Pokémon" 
+                                                class="img-fluid rounded mb-2">
+                                        @else
+                                            <p class="card-text">
+                                                <a href="{{ $fileUrl }}" target="_blank">
+                                                    {{ basename($pokemon->foto) }}
+                                                </a>
+                                            </p>
+                                        @endif
+                                    </div>
                                 </div>
-                            </div>
+                            @endif
                         </div>
                     </div>
                 </div>
